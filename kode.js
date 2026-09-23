@@ -1,8 +1,10 @@
-function doGet() {
-  return HtmlService.createHtmlOutputFromFile('Index')
-      .setTitle('LIVE SCORE PASUKAN LASKAR 9')
-      .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL)
-      .addMetaTag('viewport', 'width=device-width, initial-scale=1');
+function doGet(e) {
+  // Ganti dengan fungsi asli Anda yang mengambil data dari Spreadsheet
+  var data = getDashboardData(); 
+  
+  // Kembalikan data dalam format JSON
+  return ContentService.createTextOutput(JSON.stringify(data))
+    .setMimeType(ContentService.MimeType.JSON);
 }
 
 function getLiveData() {
