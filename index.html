@@ -236,18 +236,21 @@
       });
       container.innerHTML = html;
     }
+const GAS_URL = "https://script.google.com/macros/s/AKfycbyJTp32JlZ3DnoigerRXEYxfTZbGDkWeGvxgPbMANbseTG0JdWKP6zoMHiOcODIEiAq/exec";
 
-    function updateDashboard() {
-      google.script.run
-        .withSuccessHandler(function(data) {
-          if (data) {
-            renderCategory('list-purna', data.purna);
-            renderCategory('list-smp', data.smp);
-            renderCategory('list-sma', data.sma);
-          }
-        })
-        .getLiveData();
-    }
+function updateDashboard() {
+  fetch(GAS_URL)
+    .then(response => response.json())
+    .then(data => {
+      // Pastikan data berhasil diambil sebelum dirender
+      if (data) {
+        renderCategory('list-purna', data.purna);
+        renderCategory('list-smp', data.smp);
+        renderCategory('list-sma', data.sma);
+      }
+    })
+    .catch(error => console.error('Error fetching data:', error));
+}
 
     // Jalankan awal
     updateDashboard();

@@ -1,6 +1,6 @@
 function doGet(e) {
   // Ganti dengan fungsi asli Anda yang mengambil data dari Spreadsheet
-  var data = getDashboardData(); 
+  var data = getDashboardData("LIVE SCORE PASUKAN LASKAR 9"); 
   
   // Kembalikan data dalam format JSON
   return ContentService.createTextOutput(JSON.stringify(data))
