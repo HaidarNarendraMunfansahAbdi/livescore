@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@600;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0d1117;
+      color: #ffffff;
+      font-family: 'Rajdhani', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    /* HEADER & LOGO LAYOUT */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      border-bottom: 3px solid #00f2fe;
+      padding-bottom: 12px;
+    }
+
+    .logo-container {
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .header-center {
+      text-align: center;
+      flex: 1;
+    }
+
+    header h1 {
+      font-family: 'Teko', sans-serif;
+      font-size: 3.5rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+    }
+
+    .status-badge {
+      display: inline-block;
+      margin-top: 6px;
+      background: rgba(255, 0, 85, 0.2);
+      border: 1px solid #ff0055;
+      color: #ff0055;
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.4; }
+      100% { opacity: 1; }
+    }
+
+    /* GRID & CARDS */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      flex: 1;
+    }
+
+    .category-card {
+      background: #161b22;
+      border-radius: 12px;
+      border: 1px solid #30363d;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    }
+
+    .category-title {
+      font-family: 'Teko', sans-serif;
+      font-size: 2rem;
+      text-align: center;
+      padding: 8px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .purna-title { background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); color: #111; }
+    .smp-title { background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%); color: #111; }
+    .sma-title { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); color: #111; }
+
+    .score-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      overflow-y: auto;
+      max-height: 70vh;
+      padding-right: 4px;
+    }
+
+    .score-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #21262d;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border-left: 4px solid #30363d;
+    }
+
+    .rank-1 { border-left-color: #ffd700; background: rgba(255, 215, 0, 0.12); }
+    .rank-2 { border-left-color: #c0c0c0; background: rgba(192, 192, 192, 0.08); }
+    .rank-3 { border-left-color: #cd7f32; background: rgba(205, 127, 50, 0.08); }
+
+    .team-info {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .rank-num {
+      font-weight: bold;
+      min-width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #30363d;
+      font-size: 0.95rem;
+      margin-right: 10px;
+    }
+
+    .rank-1 .rank-num { background: #ffd700; color: #000; }
+    .rank-2 .rank-num { background: #c0c0c0; color: #000; }
+    .rank-3 .rank-num { background: #cd7f32; color: #fff; }
+
+    .team-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .score-points {
+      font-family: 'Teko', sans-serif;
+      font-size: 1.8rem;
+      color: #00f2fe;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <!-- Logo Kiri -->
+    <div class="logo-container">
+      <img src="https://lh3.googleusercontent.com/d/1NmIy6BaFBKj6Yd8bPSC7dpV9dl7h08FR" alt="Logo Kiri" class="logo-img">
+    </div>
+
+    <!-- Judul Tengah -->
+    <div class="header-center">
+      <h1>LIVE BEST PASUKAN LASKAR 9</h1>
+      <div class="status-badge">● LIVE</div>
+    </div>
+
+    <!-- Logo Kanan -->
+    <div class="logo-container">
+      <img src="https://lh3.googleusercontent.com/d/1UHSI3CLB0YCZ7uQ3O0sVIGMrVeK7qrK0" alt="Logo Kanan" class="logo-img">
+    </div>
+  </header>
+
+  <div class="grid-container">
+    <div class="category-card">
+      <div class="category-title purna-title">PURNA / MANAGEMENT</div>
+      <div class="score-list" id="list-purna"></div>
+    </div>
+
+    <div class="category-card">
+      <div class="category-title smp-title">SMP / MTS</div>
+      <div class="score-list" id="list-smp"></div>
+    </div>
+
+    <div class="category-card">
+      <div class="category-title sma-title">SMA / SMK / MA</div>
+      <div class="score-list" id="list-sma"></div>
+    </div>
+  </div>
+
+  <script>
+    function renderCategory(containerId, items) {
+      const container = document.getElementById(containerId);
+      if (!items || items.length === 0) {
+        container.innerHTML = '<div style="text-align: center; color: #8b949e; padding: 20px;">Belum Ada Data</div>';
+        return;
+      }
+
+      let html = '';
+      items.forEach((item, index) => {
+        const rank = index + 1;
+        let rankClass = '';
+        if (rank === 1) rankClass = 'rank-1';
+        else if (rank === 2) rankClass = 'rank-2';
+        else if (rank === 3) rankClass = 'rank-3';
+
+        html += `
+          <div class="score-item ${rankClass}">
+            <div class="team-info">
+              <div class="rank-num">${rank}</div>
+              <div class="team-name" title="${item.nama}">${item.nama}</div>
+            </div>
+            <div class="score-points">${item.poin}</div>
+          </div>
+        `;
+      });
+      container.innerHTML = html;
+    }
+
+    function updateDashboard() {
+      google.script.run
+        .withSuccessHandler(function(data) {
+          if (data) {
+            renderCategory('list-purna', data.purna);
+            renderCategory('list-smp', data.smp);
+            renderCategory('list-sma', data.sma);
+          }
+        })
+        .getLiveData();
+    }
+
+    // Jalankan awal
+    updateDashboard();
+
+    // Otomatis tarik data baru setiap 2 detik
+    setInterval(updateDashboard, 2000);
+  </script>
+
+</body>
+</html>
